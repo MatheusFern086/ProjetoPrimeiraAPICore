@@ -1,2 +1,47 @@
+# Build results
 bin/
 obj/
+
+# Visual Studio cache/options
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Otimizador do VS
+*.sdf
+*.cachefile
+*.dbmdl
+
+# Arquivos temporários
+*.log
+*.tmp
+*.temp
+*.bak
+
+# Arquivos de backup
+*.Backup
+*.backup
+
+# Configuração local do VS Code
+.vscode/
+
+# Banco de dados SQLite etc
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Configurações locais que não devem ir
+appsettings.Development.json
+
+# Arquivos de índice do VS
+*.vsidx
+*.vscode
+*.v17.suo
+
+# Caches ocultos
+DesignTimeBuild/
+FileContentIndex/
