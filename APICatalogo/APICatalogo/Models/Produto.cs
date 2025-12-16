@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace APICatalogo.Models;
 [Table("Produtos")]
@@ -29,5 +30,6 @@ public class Produto
     public int CategoriaId { get; set; }
 
     //relacionamento N:1 (muitos produtos para uma categoria)
+    [JsonIgnore]
     public Categoria? Categoria { get; set; }
 }
