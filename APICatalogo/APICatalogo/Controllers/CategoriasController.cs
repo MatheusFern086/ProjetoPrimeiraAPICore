@@ -19,23 +19,37 @@ namespace APICatalogo.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Categoria>> Get()
         {
-            var categorias = _context.Categorias.AsNoTracking().ToList();
+            try
+            {
+                var categorias = _context.Categorias.AsNoTracking().ToList();
 
-            if (categorias is null)
-                return NotFound("Categorias não encontradas!");
+                if (categorias is null)
+                    return NotFound("Categorias não encontradas!");
 
-            return categorias;
+                return categorias;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um problema ao tratar sua solicitação");
+            }
         }
 
         [HttpGet("{id:int}", Name = "ObterCategoria")]
         public ActionResult<Categoria> Get(int id)
         {
-            var categoria = _context.Categorias.AsNoTracking().FirstOrDefault(x => x.CategoriaId == id);
+            try
+            {
+                var categoria = _context.Categorias.AsNoTracking().FirstOrDefault(x => x.CategoriaId == id);
 
-            if (categoria is null)
-                return NotFound("Categoria não encontrada...");
+                if (categoria is null)
+                    return NotFound("Categoria não encontrada...");
 
-            return categoria;
+                return categoria;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um problema ao tratar sua solicitação");
+            }
         }
 
         //Categorias/produtos
@@ -55,7 +69,7 @@ namespace APICatalogo.Controllers
         public ActionResult Post(Categoria categoria)
         {
             if (categoria is null)
-                return BadRequest();
+                return BadRequest("Categoria não encontrada");
 
             _context.Categorias.Add(categoria);
             _context.SaveChanges();
